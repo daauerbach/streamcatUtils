@@ -10,7 +10,7 @@ and
 http://www2.epa.gov/national-aquatic-resource-surveys/streamcat
 for info on the StreamCat products and processes.
 
-This repo contains working scripts for accessing and manipulating StreamCat data within the [R language](http://cran.us.r-project.org/) and [RStudio](https://www.rstudio.com/).
+This repo contains in-progress scripts for accessing and manipulating StreamCat data within the [R language](http://cran.us.r-project.org/) and [RStudio](https://www.rstudio.com/).
 
 Scripts depend on an updated base R installation as well as various packages. Some effort has been made to ensure that dependencies are installed and loaded, but this is firmly "research grade" scripting - **_CAVEAT EMPTOR!_**
 
@@ -25,7 +25,7 @@ source_url("https://raw.githubusercontent.com/daauerbach/streamcatUtils/master/s
 
  + [scu\_bindStreamCatST](https://github.com/daauerbach/streamcatUtils/blob/master/scu_bindStreamCatST.R) is a convenience function that takes a character vector of CAPS state abbreviations and returns a single object, removing any duplicate cats/COMIDs. 
 
- + *regulatoryStateLists* is a convenience object with vectors of state abbreviations for the 10 EPA regions and 36 Army Corps regulatory districts (excluding Alaska/POA and Hawaii/POH)
+ + *regulatoryStateLists.rds* is a small convenience object with vectors of state abbreviations for the 10 EPA regions and 36 Army Corps regulatory districts (excluding Alaska/POA and Hawaii/POH)
 
 
 
