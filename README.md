@@ -2,6 +2,7 @@
 R utility functions for using StreamCat datasets
 
 
+
 ##Description: 
 Please see
 https://github.com/USEPA/StreamCat
@@ -13,9 +14,18 @@ This repo contains working scripts for accessing and manipulating StreamCat data
 
 Scripts depend on an updated base R installation as well as various packages. Some effort has been made to ensure that dependencies are installed and loaded, but this is firmly "research grade" scripting - **_CAVEAT EMPTOR!_**
 
+Functions can be individually source()'d in a session via [devtools::source_url](http://www.inside-r.org/packages/cran/devtools/docs/source_url), for example: (note "raw" url)
+```R
+source_url("https://raw.githubusercontent.com/daauerbach/streamcatUtils/master/scu_getStreamCatST.R")
+```
+
 ##Functions
 
- + [scu\_getStreamCatST](https://github.com/daauerbach/streamcatUtils/blob/master/scu_getStreamCatST.R) takes a 2-character (caps) state abbreviation and returns a tbl_df dataframe of n-obs COMIDs with n-features ("attributes" or columns) using data.table::fread. It currently scrapes all available data per state but could be easily modified to return selected features/columns. Run time is mostly downloads. Objects can optionally be retained as .rds, which can provide substantial storage benefits over .csv (which are also easily written out).
+ + [scu\_getStreamCatST](https://github.com/daauerbach/streamcatUtils/blob/master/scu_getStreamCatST.R) takes a single 2-character CAPS state abbreviation as in [state.abb](http://www.inside-r.org/r-doc/datasets/state) and returns a tbl_df dataframe of n-obs COMIDs with n-features ("attributes" or columns) using data.table::fread directly on ftp csv files. It currently scrapes all available data per state but could be easily modified to return only selected features/columns. Run time is mostly downloads and may be several minutes for larger states and/or slow connections. Objects can optionally be retained as .rds, which can provide substantial storage benefits over .csv (which are also easily written out).
+
+ + [scu\_bindStreamCatST](https://github.com/daauerbach/streamcatUtils/blob/master/scu_bindStreamCatST.R) is a convenience function that takes a character vector of CAPS state abbreviations and returns a single object, removing any duplicate cats/COMIDs. 
+
+ + *regulatoryStateLists* is a convenience object with vectors of state abbreviations for the 10 EPA regions and 36 Army Corps regulatory districts (excluding Alaska/POA and Hawaii/POH)
 
 
 
