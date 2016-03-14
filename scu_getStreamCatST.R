@@ -37,6 +37,8 @@ getStreamCatST = function(state, #2 character abbreviation
       print("Duplicate COMID ID rows removed from data.table")
       stsc = distinct(stsc)
       }
+   
+   stsc$stabb = state
 
    row.names(stsc) = as.character(stsc$COMID)
    if(!is.null(dirOut)) {
