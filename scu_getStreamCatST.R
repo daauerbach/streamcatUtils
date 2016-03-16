@@ -29,15 +29,14 @@ getStreamCatST = function(state, #2 character abbreviation
                  ,data.table = T)
    lapply(stsc, data.table::setkey, COMID)
    stsc = Reduce(function(x,y) merge(x, y, by="COMID"), stsc)
-   stsc = tbl_df(merge(stsc1, stsc, by="COMID"))
-   
+   stsc = merge(stsc1, stsc, by="COMID") #still a data.table
    if(anyDuplicated(stsc)>0) {
       print("Duplicate COMID ID rows removed from data.table")
-      stsc = distinct(stsc)
+      stsc = unique(stsc)
       }
-   
-   stsc$stabb = state
 
+   stsc = tbl_df(stsc) #convert class to dplyr (leaves attributes)   
+   stsc$stabb = state
    row.names(stsc) = as.character(stsc$COMID)
    if(!is.null(dirOut)) {
       if(rds) {
