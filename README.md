@@ -23,10 +23,11 @@ source_url("https://raw.githubusercontent.com/daauerbach/streamcatUtils/master/s
 
  + [scu\_getStreamCatST](https://github.com/daauerbach/streamcatUtils/blob/master/scu_getStreamCatST.R) takes a single 2-character CAPS state abbreviation as in [state.abb](http://www.inside-r.org/r-doc/datasets/state) and returns a tbl_df dataframe of n-obs COMIDs with n-features ("attributes" or columns) using data.table::fread directly on ftp csv files. It currently scrapes all available data per state but could be easily modified to return only selected features/columns. Run time is mostly downloads and may be several minutes for larger states and/or slow connections. Objects can optionally be retained as .rds, which can provide substantial storage benefits over .csv (which are also easily written out).
 
- + [scu\_bindStreamCatST](https://github.com/daauerbach/streamcatUtils/blob/master/scu_bindStreamCatST.R) is a convenience function that takes a character vector of CAPS state abbreviations and returns a single object, removing any duplicate cats/COMIDs. 
+ + [scu\_bindStreamCatST](https://github.com/daauerbach/streamcatUtils/blob/master/scu_bindStreamCatST.R) is a convenience function that takes a character vector of CAPS state abbreviations and returns a single tbl_df object, removing any duplicate cats/COMIDs. 
 
  + *regulatoryStateLists.rds* is a small convenience object with vectors of state abbreviations for the 10 EPA regions and 36 Army Corps regulatory districts (excluding Alaska/POA and Hawaii/POH)
 
+ + [scu\_bindSPcatsST](https://github.com/daauerbach/streamcatUtils/blob/master/scu_bindSPcatsST.R) is also convenience function that takes a character vector of CAPS state abbreviations and returns a single sp(atial) object, by default a SpatialPointsDataFrame drawn from polygon centroids (via coordinates()) or if pts = F the underlying polygons (also removing any duplicate cats/COMIDs in either case). _*NOTE THIS CURRENTLY DEPENDS ON A DIRECTORY OF NHDplus CAT POLYGONS SPLIT BY STATE*_ Comparable simplified shapefiles [are here](http://www.horizon-systems.com/NHDPlus/V2SimpleCat.php) from Horizon Systems, but organized by VPU.
 
 
 ## Disclaimer
