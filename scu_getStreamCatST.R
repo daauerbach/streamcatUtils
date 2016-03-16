@@ -22,15 +22,13 @@ getStreamCatST = function(state, #2 character abbreviation
    attribfnst = paste0(repos,grep(paste0("_",state), attribfn, value=T))
 
    stsc1 = data.table::fread(attribfnst[1], data.table = T)  #no stringsAsFactors = F since no strings
-   setkey(stsc1, COMID)
-   stsc = Reduce(function(x,y) merge(x, y, by="COMID"),
-                 lapply(
-                    lapply(attribfnst[2:length(attribfnst)]
-                           ,data.table::fread
-                           ,drop=c("CatAreaSqKm","CatPctFull","WsAreaSqKm","WsPctFull")
-                           ,data.table = T)
-                    ,setkey, COMID)
-                  ) #end Reduce
+   data.table::setkey(stsc1, COMID)
+   stsc = lapply(attribfnst[2:length(attribfnst)]
+                 ,data.table::fread
+                 ,drop=c("CatAreaSqKm","CatPctFull","WsAreaSqKm","WsPctFull")
+                 ,data.table = T)
+   lapply(stsc, data.table::setkey, COMID)
+   stsc = Reduce(function(x,y) merge(x, y, by="COMID"), stsc)
    stsc = tbl_df(merge(stsc1, stsc, by="COMID"))
    
    if(anyDuplicated(stsc)>0) {
