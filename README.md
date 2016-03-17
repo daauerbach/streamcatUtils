@@ -3,7 +3,7 @@ R utility functions for using StreamCat datasets
 
 
 
-##Description: 
+##Description 
 Please see
 https://github.com/USEPA/StreamCat
 and 
