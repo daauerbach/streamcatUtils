@@ -19,6 +19,11 @@ Functions can be individually source()'d in a session via [devtools::source_url]
 source_url("https://raw.githubusercontent.com/daauerbach/streamcatUtils/master/scu_getStreamCatST.R")
 ```
 
+To build or refresh a library of streamCat state objects:
+```R
+for(s in state.abb[-grep("AK|HI", state.abb)]) getStreamCatST(s, dirOut = "YourDirectoryName")
+```
+
 ##Functions
 
  + [scu\_getStreamCatST](https://github.com/daauerbach/streamcatUtils/blob/master/scu_getStreamCatST.R) takes a single 2-character CAPS state abbreviation as in [state.abb](http://www.inside-r.org/r-doc/datasets/state) and returns a tbl_df dataframe of n-obs COMIDs with n-features ("attributes" or columns) using data.table::fread directly on ftp csv files. It currently scrapes all available data per state but could be easily modified to return only selected features/columns. Run time is mostly downloads and may be several minutes for larger states and/or slow connections. Objects can optionally be retained as .rds, which can provide substantial storage benefits over .csv (which are also easily written out).
