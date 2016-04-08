@@ -22,7 +22,9 @@ source_url("https://raw.githubusercontent.com/daauerbach/streamcatUtils/master/s
 To build or refresh a library of streamCat state objects:
 ```R
 for(s in state.abb[-grep("AK|HI", state.abb)]) getStreamCatST(s, dirOut = "YourDirectoryName")
+<<<<<<< HEAD
 ```
+>>>>>>> 87bcca149654247cee364d20a3594551dc880a10
 
 ##Functions
 
