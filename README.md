@@ -30,9 +30,13 @@ for(s in state.abb[-grep("AK|HI", state.abb)]) getStreamCatST(s, dirOut = "YourD
 
  + [scu\_bindStreamCatST](https://github.com/daauerbach/streamcatUtils/blob/master/scu_bindStreamCatST.R) is a convenience function that takes a character vector of CAPS state abbreviations and returns a single tbl_df object, removing any duplicate cats/COMIDs. 
 
+ + [scu\_bindSPcatsST](https://github.com/daauerbach/streamcatUtils/blob/master/scu_bindSPcatsST.R) is also convenience function that takes a character vector of CAPS state abbreviations and returns a single sp(atial) object, by default a SpatialPointsDataFrame drawn from polygon centroids (via coordinates()) or if pts = F the underlying polygons (also removing any duplicate cats/COMIDs in either case). _*NOTE THIS CURRENTLY DEPENDS ON A DIRECTORY OF NHDplus CAT POLYGONS SPLIT BY STATE*_ Comparable simplified shapefiles [are here](http://www.horizon-systems.com/NHDPlus/V2SimpleCat.php) from Horizon Systems, but organized by VPU.
+
+##Objects
+
  + *regulatoryStateLists.rds* is a small convenience object with vectors of state abbreviations for the 10 EPA regions and 36 Army Corps regulatory districts (excluding Alaska/POA and Hawaii/POH)
 
- + [scu\_bindSPcatsST](https://github.com/daauerbach/streamcatUtils/blob/master/scu_bindSPcatsST.R) is also convenience function that takes a character vector of CAPS state abbreviations and returns a single sp(atial) object, by default a SpatialPointsDataFrame drawn from polygon centroids (via coordinates()) or if pts = F the underlying polygons (also removing any duplicate cats/COMIDs in either case). _*NOTE THIS CURRENTLY DEPENDS ON A DIRECTORY OF NHDplus CAT POLYGONS SPLIT BY STATE*_ Comparable simplified shapefiles [are here](http://www.horizon-systems.com/NHDPlus/V2SimpleCat.php) from Horizon Systems, but organized by VPU.
+ + *focalfeatWs.rds* is a convenience named list of vectors of Ws (upstream NHDPlus watershed) features in StreamCat
 
 
 ## Disclaimer
